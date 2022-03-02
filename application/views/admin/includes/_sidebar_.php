@@ -52,140 +52,8 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
             </li>
           </ul>
         </li>
-        
-		<li id="dashboard" class="nav-item">
-          <a href="<?= base_url('admin/dashboard'); ?>" class="nav-link">
-            <i class="nav-icon fa fa-dashboard"></i>
-            <p>
-              Dashboard
-            </p>
-          </a>
-        </li>
-        
-    	<li id="dadmin" class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-user"></i>
-            <p>
-              District Admin
-              <i class="right fa fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?= base_url('admin/users/dadmin'); ?>" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>District Admin List</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url('admin/users/add_dadmin'); ?>" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>Add New District Admin</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        
-        <li id="clusterschool" class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-user"></i>
-            <p>
-              Cluster Centers
-              <i class="right fa fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?= base_url('admin/clusterschool'); ?>" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>Cluster Centers List</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url('admin/clusterschool/add'); ?>" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>Add New Cluster Center</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li id="pefschool" class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-user"></i>
-            <p>
-              PEF School
-              <i class="right fa fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?= base_url('admin/clusterschool/pef_school'); ?>" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>PEF School List</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url('admin/clusterschool/add'); ?>" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>Add New PEF School</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-    
-        <li id="staffs" class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-user"></i>
-            <p>
-              Staff
-              <i class="right fa fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?= base_url('admin/staffs'); ?>" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>Staff List</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url('admin/staffs/add'); ?>" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>Add New Staff</p>
-              </a>
-            </li>
-          </ul>
-        </li> 
-    
-	    <li id="export" class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-life-ring"></i>
-            <p>
-              Backup & Export
-              <i class="right fa fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?= base_url('admin/export'); ?>" class="nav-link">
-                <i class="fa fa-circle-o nav-icon"></i>
-                <p>Database Backup</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        
-        <li id="general_settings" class="nav-item">
-          <a href="<?= base_url('admin/general_settings'); ?>" class="nav-link">
-            <i class="nav-icon fa fa-cogs"></i>
-            <p>
-              General Settings
-            </p>
-          </a>
-        </li>
-        
-        <?php /*?>
-		<li id="dashboard" class="nav-item has-treeview">
+
+        <li id="dashboard" class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fa fa-dashboard"></i>
             <p>
@@ -215,7 +83,60 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
           </ul>
         </li>
       
-	    <li id="widgets" class="nav-item">
+        <li id="users" class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-user"></i>
+            <p>
+              Users
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?= base_url('admin/users'); ?>" class="nav-link">
+                <i class="fa fa-circle-o nav-icon"></i>
+                <p>Users List</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= base_url('admin/users/add'); ?>" class="nav-link">
+                <i class="fa fa-circle-o nav-icon"></i>
+                <p>Add New User</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+    
+
+        <li id="export" class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-life-ring"></i>
+            <p>
+              Backup & Export
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?= base_url('admin/export'); ?>" class="nav-link">
+                <i class="fa fa-circle-o nav-icon"></i>
+                <p>Database Backup</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        <li id="general_settings" class="nav-item">
+          <a href="<?= base_url('admin/general_settings'); ?>" class="nav-link">
+            <i class="nav-icon fa fa-cogs"></i>
+            <p>
+              General Settings
+            </p>
+          </a>
+        </li>
+
+
+        <li id="widgets" class="nav-item">
           <a href="<?= base_url('admin/widgets'); ?>" class="nav-link">
             <i class="nav-icon fa fa-th"></i>
             <p>
@@ -484,7 +405,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
             <i class="nav-icon fa fa-circle-o text-info"></i>
             <p>Informational</p>
           </a>
-        </li><?php */?>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

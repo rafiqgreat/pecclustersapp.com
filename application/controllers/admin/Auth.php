@@ -56,6 +56,7 @@ class Auth extends MY_Controller {
 						$admin_data = array(
 							'admin_id' => $result['admin_id'],
 							'username' => $result['username'],
+							'admin_role_id' => $result['admin_role_id'],
 							'is_admin_login' => TRUE
 						);
 						$this->session->set_userdata($admin_data);

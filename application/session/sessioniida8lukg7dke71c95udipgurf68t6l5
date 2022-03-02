@@ -1,0 +1,7 @@
+__ci_last_regenerate|i:1646214604;admin_id|s:2:"25";username|s:5:"admin";admin_role_id|s:1:"1";is_admin_login|b:1;errors|s:231:"<p>The Staffname field is required.</p>
+<p>The Firstname field is required.</p>
+<p>The Lastname field is required.</p>
+<p>The Email field is required.</p>
+<p>The Number field is required.</p>
+<p>The Password field is required.</p>
+";__ci_vars|a:1:{s:6:"errors";s:3:"old";}
