@@ -64,7 +64,7 @@ class Clusterschool extends MY_Controller {
 				type="checkbox"  
 				'.$status.'><label for="cb_'.$row['cs_id'].'"></label>',		
 				'<a title="Edit" class="update btn btn-sm btn-warning" href="'.base_url('admin/clusterschool/edit/'.$row['cs_id']).'"> <i class="fa fa-pencil-square-o"></i></a>
-				<a title="Delete" class="delete btn btn-sm btn-danger" href='.base_url("admin/clusterschool/delete/".$row['cs_id']."/".$row['cs_type']).' title="Delete" onclick="return confirm(\'Do you want to delete ?\')"> <i class="fa fa-trash-o"></i></a>'
+				 <a title="Delete" class="delete btn btn-sm btn-danger" href='.base_url("admin/clusterschool/delete/".$row['cs_id']."/".$row['cs_type']).' title="Delete" onclick="return confirm(\'Do you want to delete ?\')"> <i class="fa fa-trash-o"></i></a>'
 			);
 		}
 		$records['data']=$data;
@@ -81,7 +81,7 @@ class Clusterschool extends MY_Controller {
 		{
 			$parent = $this->Clusterschool_model->get_parent_name($row['cs_parent']);
 			$status = ($row['cs_status'] == 1)? 'checked': '';
-			$data[]= array(
+			$data[] = array(
 				++$i,
 				$row['cs_type'],
 				$parent[0]['cs_name'],

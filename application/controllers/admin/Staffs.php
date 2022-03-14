@@ -17,7 +17,7 @@ class Staffs extends MY_Controller {
 		$this->load->view('admin/staffs/staff_list');
 		$this->load->view('admin/includes/_footer');
 	}
-	
+		
 	public function datatable_json(){				   					   
 		$records = $this->staff_model->get_all_staffs();
 		$data = array();
@@ -30,6 +30,8 @@ class Staffs extends MY_Controller {
 				++$i,
 				$row['staffname'],
 				$row['email'],
+				$row['district_name_en'],
+				$row['tehsil_name_en'],
 				$row['school_id'],
 				$row['type'],
 				$row['mobile_no'],
@@ -78,6 +80,8 @@ class Staffs extends MY_Controller {
 					'firstname' => $this->input->post('firstname'),
 					'lastname' => $this->input->post('lastname'),
 					'email' => $this->input->post('email'),
+					'district' => $this->input->post('district'),
+					'tehsil' => $this->input->post('tehsil'),
 					'school_id' => $this->input->post('school_id'),
 					'type' => $this->input->post('type'),
 					'mobile_no' => $this->input->post('mobile_no'),
@@ -96,7 +100,11 @@ class Staffs extends MY_Controller {
 		else{
 
 			$data['title'] = 'Add Staff';
+			$data['districts'] = $this->staff_model->getDistricts();
+			$data['tehsil'] = $this->staff_model->getTehsils();
 
+			//print_r($data['districts']);
+			//die();
 			$this->load->view('admin/includes/_header', $data);
 			$this->load->view('admin/staffs/staff_add');
 			$this->load->view('admin/includes/_footer');
@@ -125,6 +133,7 @@ class Staffs extends MY_Controller {
 					'staffname' => $this->input->post('staffname'),
 					'firstname' => $this->input->post('firstname'),
 					'lastname' => $this->input->post('lastname'),
+					'district' => $this->input->post('district'),
 					'school_id' => $this->input->post('school_id'),
 					'email' => $this->input->post('email'),
 					'type' => $this->input->post('type'),
@@ -143,6 +152,8 @@ class Staffs extends MY_Controller {
 		}
 		else{
 			$data['title'] = 'Edit Staff';
+			$data['districts'] = $this->staff_model->getDistricts();
+			$data['tehsil'] = $this->staff_model->getTehsils();
 			$data['staff'] = $this->staff_model->get_staff_by_id($id);
 			
 			$this->load->view('admin/includes/_header', $data);
@@ -155,7 +166,7 @@ class Staffs extends MY_Controller {
 	public function delete($id = 0)
 	{
 		
-		$this->db->delete('ci_staffs', array('id' => $id));
+		$this->db->delete('ci_staff', array('id' => $id));
 		$this->session->set_flashdata('success', 'Use has been deleted successfully!');
 		redirect(base_url('admin/staffs'));
 	}
@@ -185,18 +196,22 @@ class Staffs extends MY_Controller {
 	   // file creation 
 		$file = fopen('php://output', 'w');
 
-		$header = array("ID", "Staff Name", "First Name", "Last Name","School Name", "Email","Type", "Mobile_no", "Created Date"); 
+		$header = array("ID", "Staff Name", "First Name", "Last Name","District","Tehsil","School Name", "Email","Type", "Mobile_no", "Created Date"); 
 
 		fputcsv($file, $header);
 		foreach ($staff_data as $key=>$line){ 
 			fputcsv($file,$line); 
 		}
 		fclose($file); 
-		exit; 
+		exit;
+	
+	
 	}
-
-
+	public function tehsil_by_district()
+	{
+		echo json_encode($this->staff_model->getTehsils_by_district($this->input->post('district_id')));
+	
 }
 
-
+}
 	?>

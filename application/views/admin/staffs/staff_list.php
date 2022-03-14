@@ -28,6 +28,8 @@
               <th>#ID</th>
               <th>Staff Name</th>
               <th>Email</th>
+              <th>District</th>
+              <th>Tehsil</th>
               <th>School Id</th>
               <th>Type</th>
               <th>Mobile No.</th>
@@ -58,12 +60,14 @@
     { "targets": 0, "name": "id", 'searchable':true, 'orderable':true},
     { "targets": 1, "name": "staffname", 'searchable':true, 'orderable':true},
     { "targets": 2, "name": "email", 'searchable':true, 'orderable':true},
-    { "targets": 3, "name": "school_id", 'searchable':true, 'orderable':true},
-    { "targets": 4, "name": "type", 'searchable':true, 'orderable':true},
-    { "targets": 5, "name": "mobile_no", 'searchable':true, 'orderable':true},
-    { "targets": 6, "name": "created_at", 'searchable':false, 'orderable':false},
-    { "targets": 7, "name": "is_active", 'searchable':true, 'orderable':true},
-    { "targets": 8, "name": "Action", 'searchable':false, 'orderable':false,'width':'100px'}
+    { "targets": 3, "name": "district_name_en", 'searchable':true, 'orderable':true},
+    { "targets": 4, "name": "tehsil", 'searchable':true, 'orderable':true},
+    { "targets": 5, "name": "school_id", 'searchable':true, 'orderable':true},
+    { "targets": 6, "name": "type", 'searchable':true, 'orderable':true},
+    { "targets": 7, "name": "mobile_no", 'searchable':true, 'orderable':true},
+    { "targets": 8, "name": "created_at", 'searchable':false, 'orderable':false},
+    { "targets": 9, "name": "is_active", 'searchable':true, 'orderable':true},
+    { "targets": 10, "name": "Action", 'searchable':false, 'orderable':false,'width':'100px'}
     ]
   });
 </script>

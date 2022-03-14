@@ -139,6 +139,35 @@
               </div>
 
               <div class="form-group">
+                <label for="district" class="col-sm-2 control-label">District</label>
+
+                <div class="col-md-12">
+                <select id="district" name="district" class="form-control">
+                <option value="" >--Select District--</option>
+                <?php
+                foreach($districts as $dis)
+                {
+                  ?>
+                  <option value="<?= $dis['district_id']; ?>" ><?= $dis['district_name_en']; ?></option>
+                  <?php
+                }
+                ?>         
+               </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tehsil" class="col-sm-2 control-label">Tehsil</label>
+
+                <div class="col-md-12">
+                <select id="tehsil" name="tehsil" class="form-control">
+                <option value="" >--Select Tehsil--</option>  
+               </select>
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
                 <label for="school_id" class="col-sm-2 control-label">School Name</label>
 
                 <div class="col-md-12">
@@ -169,6 +198,33 @@
 
         </div>
 
-    </section> 
+    </section>
+    
 
   </div>
+  <script language="javascript" type="text/javascript">
+$('#div_cs_parent').css('display','none');
+$('#district').on('change', function() {
+
+      
+      $.post('<?=base_url("admin/staffs/tehsil_by_district")?>',
+    {
+      '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
+      district_id : this.value
+    },
+    function(data){
+      arr = $.parseJSON(data);     
+      console.log(arr);     
+      $('#tehsil option:not(:first)').remove();
+      $.each(arr, function(key, value) {           
+      $('#tehsil')
+         .append($("<option></option>")
+                    .attr("value", value.tehsil_id)
+                    .text(value.tehsil_name_en)
+                  ); 
+        });   
+    });
+});
+
+
+</script>

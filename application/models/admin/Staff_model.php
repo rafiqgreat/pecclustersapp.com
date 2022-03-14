@@ -10,7 +10,9 @@
 		// get all staffs for server-side datatable processing (ajax based)
 		public function get_all_staffs(){
 			$wh =array();
-			$SQL ='SELECT * FROM ci_staff';			
+			$SQL ='SELECT *, district_name_en, tehsil_name_en FROM ci_staff s
+			INNER JOIN ci_districts d ON s.district = d.district_id
+			INNER JOIN ci_tehsil t ON s.tehsil = t.tehsil_id';			
 			if(count($wh)>0)
 			{
 				$WHERE = implode(' and ',$wh);
@@ -58,7 +60,34 @@
 			$query = $this->db->get();
 			return $result = $query->result_array();
 		}
-
+		public function getDistricts()
+		{
+			$this->db->where('district_status', 1);
+			$this->db->select('*');
+			$this->db->from('ci_districts');
+			$query = $this->db->get();
+			return $result = $query->result_array();
+		}
+		public function getTehsils()
+		{	
+			$this->db->select('*')
+					 ->from('ci_tehsil')					 
+					 ->where('tehsil_status', 1);
+			$query = $this->db->get();
+			return $result = $query->result_array();
+			//$result = $query->result_array();
+			//print_r($result);
+			//die();
+		}
+		function getTehsils_by_district($district_id)
+		{
+			$this->db->select('tehsil_id, tehsil_name_en, tehsil_name_ur')
+					 ->from('ci_tehsil')
+					 ->where('tehsil_district_id', $district_id)
+					 ->where('tehsil_status', 1);					 
+			$query = $this->db->get();			
+			return $query->result_array();
+		}
 	}
-
-?>
+	?>
+		
