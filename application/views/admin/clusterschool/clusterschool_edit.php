@@ -7,10 +7,10 @@
         <div class="card-header">
           <div class="d-inline-block">
               <h3 class="card-title"> <i class="fa fa-plus"></i>
-              Edit Cluster Center/School </h3>
+              Edit Exams Center/School </h3>
           </div>
           <div class="d-inline-block float-right">
-            <a href="<?= base_url('admin/clusterschool'); ?>" class="btn btn-success"><i class="fa fa-list"></i>  Cluster Centers List</a>
+            <a href="<?= base_url('admin/clusterschool'); ?>" class="btn btn-success"><i class="fa fa-list"></i>  Exams Centers List</a>
           </div>
           <div class="d-inline-block float-right" style="margin-right:05px">
             <a href="<?= base_url('admin/clusterschool/school'); ?>" class="btn btn-success"><i class="fa fa-list"></i>  School List</a>
@@ -26,8 +26,8 @@
                  <div class="col-lg-12 col-sm-12" >
                 	<label for="cs_type" class="col-sm-12 control-label"> Type</label>
                     <select name="cs_type" class="form-control" id="cs_type" placeholder="" required="required">
-                        <option value="CLUSTER" <?= ($culsch['cs_type'] == 'CLUSTER')?'selected': '' ?>>CLUSTER</option>
-                        <option value="PEF" <?= ($culsch['cs_type'] == 'PEF')?'selected': '' ?>>PEF</option>
+                        <option value="CLUSTER" <?= ($culsch['cs_type'] == 'CLUSTER')?'selected': '' ?>>Exams Center</option>
+                        <option value="PEF" <?= ($culsch['cs_type'] == 'PEF')?'selected': '' ?>>PEIMA School</option>
                     </select>
                 </div>
               </div>
@@ -132,7 +132,7 @@
                 </div>
               </div>
               <div class="row" id="div_cs_parent">
-                	<label for="cs_parent" class="col-sm-12 control-label">Select Cluster Center</label>
+                	<label for="cs_parent" class="col-sm-12 control-label">Select Exams Center</label>
                     <select name="cs_parent" class="form-control form-group" id="cs_parent">
                         <option value="">---Select Cluster Center---</option>
                         <?php

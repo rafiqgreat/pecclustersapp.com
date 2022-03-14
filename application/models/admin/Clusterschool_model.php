@@ -141,8 +141,6 @@
 		} 
 		
 		public function edit($data, $id){
-			print_r($data);
-			die();
 			$this->db->where('cs_id', $id);
 			$this->db->update('ci_schools', $data);
 			return true;

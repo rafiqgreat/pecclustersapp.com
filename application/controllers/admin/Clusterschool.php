@@ -63,8 +63,8 @@ class Clusterschool extends MY_Controller {
 				id="cb_'.$row['cs_id'].'"
 				type="checkbox"  
 				'.$status.'><label for="cb_'.$row['cs_id'].'"></label>',		
-				'<a title="Edit" class="update btn btn-sm btn-warning" href="'.base_url('admin/clusterschool/edit/'.$row['cs_id']).'"> <i class="fa fa-pencil-square-o"></i></a>
-				 <a title="Delete" class="delete btn btn-sm btn-danger" href='.base_url("admin/clusterschool/delete/".$row['cs_id']."/".$row['cs_type']).' title="Delete" onclick="return confirm(\'Do you want to delete ?\')"> <i class="fa fa-trash-o"></i></a>'
+				'<a title="Edit" class="update btn btn-sm btn-warning" href="'.base_url('admin/clusterschool/edit/'.$row['cs_id']).'"> <i class="fa fa-pencil-square-o"></i></a>'
+				//<a title="Delete" class="delete btn btn-sm btn-danger" href='.base_url("admin/clusterschool/delete/".$row['cs_id']."_".$row['cs_type']).' title="Delete" onclick="return confirm(\'Do you want to delete ?\')"> <i class="fa fa-trash-o"></i></a>
 			);
 		}
 		$records['data']=$data;
@@ -79,12 +79,21 @@ class Clusterschool extends MY_Controller {
 		
 		foreach ($records['data']  as $row) 
 		{
-			$parent = $this->Clusterschool_model->get_parent_name($row['cs_parent']);
+			if($row['cs_parent']!="")
+			{
+				$parent = $this->Clusterschool_model->get_parent_name($row['cs_parent']);
+				if(!empty($parent)){$parent = $parent[0]['cs_name'];}else{$parent = "Cluster has been deleted";}
+			}
+			else
+			{
+				$parent = "No Cluster Center";
+			}
+			
 			$status = ($row['cs_status'] == 1)? 'checked': '';
 			$data[] = array(
 				++$i,
 				$row['cs_type'],
-				$parent[0]['cs_name'],
+				$parent,
 				$row['cs_name'],
 				$row['cs_address'],
 				$row['district_name_en'],
@@ -96,7 +105,7 @@ class Clusterschool extends MY_Controller {
 				type="checkbox"  
 				'.$status.'><label for="cb_'.$row['cs_id'].'"></label>',		
 				'<a title="Edit" class="update btn btn-sm btn-warning" href="'.base_url('admin/clusterschool/edit/'.$row['cs_id']).'"> <i class="fa fa-pencil-square-o"></i></a>
-				<a title="Delete" class="delete btn btn-sm btn-danger" href='.base_url("admin/clusterschool/delete/".$row['cs_id']."".$row['cs_type']).' title="Delete" onclick="return confirm(\'Do you want to delete ?\')"> <i class="fa fa-trash-o"></i></a>'
+				<a title="Delete" class="delete btn btn-sm btn-danger" href='.base_url("admin/clusterschool/delete/".$row['cs_id']."_".$row['cs_type']).' title="Delete" onclick="return confirm(\'Do you want to delete ?\')"> <i class="fa fa-trash-o"></i></a>'
 			);
 		}
 		$records['data']=$data;
@@ -262,10 +271,11 @@ class Clusterschool extends MY_Controller {
 		}
 	}
 	//-----------------------------------------------------------
-	public function delete($id = 0,$type)
+	public function delete($params)
 	{
-		$this->db->delete('ci_clusterschool', array('cs_id' => $id));
-		if($type="CLUSTER")
+		$params  = explode("_", $params);
+		$this->db->delete('ci_schools', array('cs_id' => $params[0]));
+		if($params[1]=="CLUSTER")
 		{
 			$this->session->set_flashdata('success', 'Cluster Center has been deleted successfully!');
 			redirect(base_url('admin/clusterschool'));

@@ -147,15 +147,15 @@
     "ajax": "<?=base_url('admin/school/datatable_json?school_district_id='.$school_district_id.'&school_tehsil_id='.$school_tehsil_id.'&school_type='.$school_type.'&school_gender='.$school_gender)?>",
   //  "order": [[1,'desc']],
     "columnDefs": [
-    { "targets": 0, "name": "school_id", 'searchable':false, 'orderable':false},
-	{ "targets": 1, "name": "ci_schools.username", 'searchable':true, 'orderable':true},
-	{ "targets": 2, "name": "school_type", 'searchable':true, 'orderable':true},
-	{ "targets": 3, "name": "school_name", 'searchable':true, 'orderable':true},
-    { "targets": 4, "name": "school_address", 'searchable':true, 'orderable':true},
-    { "targets": 5, "name": "district_name_en", 'searchable':true, 'orderable':true},
-	{ "targets": 6, "name": "tehsil_name_en", 'searchable':true, 'orderable':true},
-	{ "targets": 7, "name": "school_gender", 'searchable':true, 'orderable':true},
-	{ "targets": 8, "name": "school_status", 'searchable':false, 'orderable':true},
+    { "targets": 0, "name": "cs_id", 'searchable':false, 'orderable':false},
+	{ "targets": 1, "name": "cs_name.username", 'searchable':true, 'orderable':true},
+	{ "targets": 2, "name": "cs_type", 'searchable':true, 'orderable':true},
+	{ "targets": 3, "name": "cs_name", 'searchable':true, 'orderable':true},
+    { "targets": 4, "name": "cs_address", 'searchable':true, 'orderable':true},
+    { "targets": 5, "name": "cs_district_id", 'searchable':true, 'orderable':true},
+	{ "targets": 6, "name": "cs_tehsil_id", 'searchable':true, 'orderable':true},
+	{ "targets": 7, "name": "cs_gender", 'searchable':true, 'orderable':true},
+	{ "targets": 8, "name": "cs_status", 'searchable':false, 'orderable':true},
     { "targets": 9, "name": "Action", 'searchable':false, 'orderable':false,'width':'100px'}
     ]
   });

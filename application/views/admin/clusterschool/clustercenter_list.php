@@ -9,7 +9,7 @@
     <div class="card">
       <div class="card-header">
         <div class="d-inline-block">
-          <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; Cluster Centers List</h3>
+          <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; Exams Centers List</h3>
         </div>
         <div class="d-inline-block float-right">
           <div class="btn-group margin-bottom-20"> 
@@ -17,7 +17,7 @@
             <a href="<?= base_url('admin/clusterschool/export_culschool_csv') ?>" class="btn btn-secondary">Export as CSV</a>
           </div>
 			<?php if($this->session->userdata('admin_role_id') == 1){?>
-          	<a href="<?= base_url('admin/clusterschool/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Cluster Center</a>
+          	<a href="<?= base_url('admin/clusterschool/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Exams Center</a>
 			<?php }?>
         </div>
       </div>

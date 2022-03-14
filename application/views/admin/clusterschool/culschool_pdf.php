@@ -1,7 +1,7 @@
 <?php
 
 $html = '
-		<h3>Cluster Center List</h3>
+		<h3>Exams Center List</h3>
 		<table border="1" style="width:100%">
 			<thead>
 				<tr>
@@ -39,7 +39,7 @@ $html = '
 		$mpdf = new mPDF('c');
 
 		$mpdf->SetProtection(array('print'));
-		$mpdf->SetTitle("Light Admin - Cluster Center List");
+		$mpdf->SetTitle("Light Admin - Exams Center List");
 		$mpdf->SetAuthor("Codeglamour");
 		$mpdf->watermark_font = 'Codeglamour';
 		$mpdf->watermarkTextAlpha = 0.1;

@@ -1,13 +1,13 @@
 <?php
 
 $html = '
-		<h3>PEF School List</h3>
+		<h3>PEIMA School List</h3>
 		<table border="1" style="width:100%">
 			<thead>
 				<tr>
 				  <th>#ID</th>
 				  <th>Type</th>
-				  <th>Cluster Center</th>
+				  <th>Exams Center</th>
 				  <th>Name</th>
 				  <th>Address</th>
 				  <th>District</th>
@@ -41,7 +41,7 @@ $html = '
 		$mpdf = new mPDF('c');
 
 		$mpdf->SetProtection(array('print'));
-		$mpdf->SetTitle("Light Admin - PEF School List");
+		$mpdf->SetTitle("Light Admin - PEIMA School List");
 		$mpdf->SetAuthor("Codeglamour");
 		$mpdf->watermark_font = 'Codeglamour';
 		$mpdf->watermarkTextAlpha = 0.1;

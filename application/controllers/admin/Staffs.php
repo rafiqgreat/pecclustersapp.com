@@ -42,9 +42,9 @@ class Staffs extends MY_Controller {
 				type="checkbox"  
 				'.$status.'><label for="cb_'.$row['id'].'"></label>',		
 
-				'<a title="View" class="view btn btn-sm btn-info" href="'.base_url('admin/staffs/edit/'.$row['id']).'"> <i class="fa fa-eye"></i></a>
-				<a title="Edit" class="update btn btn-sm btn-warning" href="'.base_url('admin/staffs/edit/'.$row['id']).'"> <i class="fa fa-pencil-square-o"></i></a>
+				'<a title="Edit" class="update btn btn-sm btn-warning" href="'.base_url('admin/staffs/edit/'.$row['id']).'"> <i class="fa fa-pencil-square-o"></i></a>
 				<a title="Delete" class="delete btn btn-sm btn-danger" href='.base_url("admin/staffs/delete/".$row['id']).' title="Delete" onclick="return confirm(\'Do you want to delete ?\')"> <i class="fa fa-trash-o"></i></a>'
+				//<a title="View" class="view btn btn-sm btn-info" href="'.base_url('admin/staffs/edit/'.$row['id']).'"> <i class="fa fa-eye"></i></a>
 			);
 		}
 		$records['data']=$data;
@@ -153,7 +153,8 @@ class Staffs extends MY_Controller {
 		else{
 			$data['title'] = 'Edit Staff';
 			$data['districts'] = $this->staff_model->getDistricts();
-			$data['tehsil'] = $this->staff_model->getTehsils();
+			$data['tehsils'] = $this->staff_model->getTehsils();
+			$data['schools'] = $this->staff_model->getSchools();
 			$data['staff'] = $this->staff_model->get_staff_by_id($id);
 			
 			$this->load->view('admin/includes/_header', $data);
@@ -207,11 +208,19 @@ class Staffs extends MY_Controller {
 	
 	
 	}
+	
 	public function tehsil_by_district()
 	{
 		echo json_encode($this->staff_model->getTehsils_by_district($this->input->post('district_id')));
+	}
 	
-}
-
+	public function schools_by_tehsil()
+	{
+		echo json_encode($this->staff_model->getSchools_by_tehsil($this->input->post('tehsil_id')));
+	}
+	public function cluster_schools_by_tehsil()
+	{
+		echo json_encode($this->staff_model->getSchools_by_tehsil($this->input->post('tehsil_id')));
+	}
 }
 	?>

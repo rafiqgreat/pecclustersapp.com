@@ -30,7 +30,7 @@
                     <select name="school_department" class="form-control form-group" id="school_department" placeholder="" required="required">
 						<option value="SED">SED</option>
                         <option value="FEDERAL">FEDERAL</option>                       
-                        <option value="PEF">PEF</option>
+                        <option value="PEF">PEIMA</option>
                         <option value="COMMUNITY">COMMUNITY</option>
 						<option value="LITERACY">LITERACY</option>
 						<option value="PSSP">PSSP</option>

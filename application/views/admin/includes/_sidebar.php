@@ -90,7 +90,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
           <a href="#" class="nav-link">
             <i class="nav-icon fa fa-user"></i>
             <p>
-              Cluster Centers
+              Exams Centers
               <i class="right fa fa-angle-left"></i>
             </p>
           </a>
@@ -98,13 +98,13 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
             <li class="nav-item">
               <a href="<?= base_url('admin/clusterschool'); ?>" class="nav-link">
                 <i class="fa fa-circle-o nav-icon"></i>
-                <p>Cluster Centers List</p>
+                <p>Exams Centers List</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="<?= base_url('admin/clusterschool/add'); ?>" class="nav-link">
                 <i class="fa fa-circle-o nav-icon"></i>
-                <p>Add New Cluster Center</p>
+                <p>Add New Exams Center</p>
               </a>
             </li>
           </ul>
@@ -113,7 +113,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
           <a href="#" class="nav-link">
             <i class="nav-icon fa fa-user"></i>
             <p>
-              PEF School
+              PEIMA School
               <i class="right fa fa-angle-left"></i>
             </p>
           </a>
@@ -121,13 +121,13 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
             <li class="nav-item">
               <a href="<?= base_url('admin/clusterschool/pef_school'); ?>" class="nav-link">
                 <i class="fa fa-circle-o nav-icon"></i>
-                <p>PEF School List</p>
+                <p>PEIMA School List</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="<?= base_url('admin/clusterschool/add'); ?>" class="nav-link">
                 <i class="fa fa-circle-o nav-icon"></i>
-                <p>Add New PEF School</p>
+                <p>Add New PEIMA School</p>
               </a>
             </li>
           </ul>

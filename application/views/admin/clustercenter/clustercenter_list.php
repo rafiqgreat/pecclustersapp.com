@@ -9,7 +9,7 @@
     <div class="card">
       <div class="card-header">
         <div class="d-inline-block">
-          <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; Cluster Centers List</h3>
+          <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; Exams Centers List</h3>
         </div>
         <div class="d-inline-block float-right">
           <?php /*?><div class="btn-group margin-bottom-20"> 
@@ -17,100 +17,13 @@
             <a href="<?= base_url('admin/school/export_school_csv?school_district_id='.$school_district_id.'&school_tehsil_id='.$school_tehsil_id.'&school_type='.$school_type.'&school_gender='.$school_gender) ?>" class="btn btn-secondary">Export as CSV</a>
           </div><?php */?>
 			<?php if($this->session->userdata('admin_role_id') == 1){?>
-          	<a href="<?= base_url('admin/clustercenter/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Cluster Center</a>
+          	<a href="<?= base_url('admin/clustercenter/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Exams Center</a>
 			<?php }?>
         </div>
       </div>
     </div>
 	  <div class="card">
-      <?php /*?><div class="card-header">
-            <?php echo form_open(base_url('admin/school'), 'class="form-horizontal" method="post"');  ?>
-              <div class="row" style="width:100%">
-              <div class ="col-12" style="font-size:18px; font-weight:bold">Advance Search :</div>
-              <div class ="col-12">
-              	<div class ="row" style="padding-top:25px">
-                    <div class ="col-3" <?php if($this->session->userdata('role_id') == 7 || $this->session->userdata('role_id') == 8){?> style="display: none;"<?php }?>>
-                    	<select name="school_district_id" class="form-control" id="school_district_id" placeholder="">
-                      <option value="">---Select All District---</option>
-                     <?php 
-					 foreach($districts as $district)
-						 {
-							$selectedText = '';
-						 	if($this->session->userdata('role_id') == 7 || $this->session->userdata('role_id') == 8){
-								if($this->session->userdata('u_district_id') == $district['district_id'])
-								$selectedText = ' selected="selected" ';
-							}else{
-								if($school_district_id == $district['district_id'])
-								$selectedText = ' selected="selected" ';
-							}
-							echo '<option value="'.$district['district_id'].'"'.$selectedText.'>'.$district['district_name_en'].'</option>'; 
-						 }
-					 ?>
-                    </select>
-                    </div>
-                    <div class ="col-3" <?php if($this->session->userdata('role_id') == 8){?> style="display: none;"<?php }?>>
-                    	<select name="school_tehsil_id" class="form-control form-group" id="school_tehsil_id" placeholder="">
-							<option value="">---Select All Tehsil---</option>
-								<?php 
-								if($this->session->userdata('role_id') == 7 || $this->session->userdata('role_id') == 8){
-								   $tehsils  = $this->School_model->get_tehsil_by_district($this->session->userdata('u_district_id'));
-								   foreach($tehsils as $tehsil)
-									  {
-										$selectedText = '';
-									   if($this->session->userdata('role_id') == 8){
-										   if($this->session->userdata('u_tehsil_id') == $tehsil['tehsil_id'])
-											$selectedText = ' selected="selected" ';
-									   }else{
-										   if($school_tehsil_id == $tehsil['tehsil_id'])
-											$selectedText = ' selected="selected" ';
-									   }
-										echo '<option value="'.$tehsil['tehsil_id'].'" '.$selectedText.'>'.$tehsil['tehsil_name_en'].'</option>';
-									  }
-								}else{
-								   $tehsils  = $this->School_model->get_tehsil_by_district($school_district_id);
-								   foreach($tehsils as $tehsil)
-									  {
-										$selectedText = '';
-									   if($school_tehsil_id == $tehsil['tehsil_id'])
-											$selectedText = ' selected="selected" ';
-									  
-										echo '<option value="'.$tehsil['tehsil_id'].'" '.$selectedText.'>'.$tehsil['tehsil_name_en'].'</option>';
-									  }
-								}
-								?>
-							</select>
-                    </div>
-                    <div class ="col-3">
-						<select name="school_type" class="form-control form-group" id="school_type" placeholder="">
-							<option value="">---Select All School Type---</option>
-							<option value="Public" <?php if($school_type === 'Public'){?> selected="selected"<?php }?>>Public</option>
-							<option value="Private" <?php if($school_type === 'Private'){?> selected="selected"<?php }?>>Private</option>
-						</select>
-                    </div>
-					<div class ="col-3">
-						<select name="school_gender" class="form-control form-group" id="school_gender" placeholder="">
-							<option value="">---Select School Gender---</option>
-							<option value="MALE" <?php if($school_gender === 'MALE'){?> selected="selected"<?php }?>>MALE</option>
-							<option value="FEMALE" <?php if($school_gender === 'FEMALE'){?> selected="selected"<?php }?>>FEMALE</option>
-							<option value="BOTH" <?php if($school_gender === 'BOTH'){?> selected="selected"<?php }?>>BOTH</option>
-						</select>
-                    </div>
-					<?php if($this->session->userdata('role_id') == 7 || $this->session->userdata('role_id') == 8){?>
-						
-					<?php }else{?>
-						<div class ="col-3">&nbsp;</div>
-						<div class ="col-3">&nbsp;</div>
-						<div class ="col-3">&nbsp;</div>
-					<?php }?>
-					<div class ="col-3" style="float:right"> 
-						<input type="submit" id="search_school" name="search_school" class="btn btn-success" value="Search" style="width:120px; float:right"/>
-					</div> 
-                </div>
-              </div>
-              
-              </div>
-            <?php echo form_close( ); ?>
-      </div><?php */?>
+     
     </div>
     <div class="card">
       <div class="card-body table-responsive">
@@ -144,7 +57,7 @@
   var table = $('#na_datatable').DataTable( {
     "processing": true,
     "serverSide": true,
-    "ajax": "<?=base_url('admin/clustercenter/datatable_json')?>",
+    "ajax": "<?=base_url('admin/clusterschool/datatable_json')?>",
   //  "order": [[1,'desc']],
     "columnDefs": [
     { "targets": 0, "name": "cc_id", 'searchable':false, 'orderable':false},
@@ -165,7 +78,7 @@
 <script type="text/javascript">
   $("body").on("change",".tgl_checkbox",function(){
     console.log('checked');
-    $.post('<?=base_url("admin/clustercenter/change_status")?>',
+    $.post('<?=base_url("admin/clusterschool/change_status")?>',
     {
       '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
       school_id : $(this).data('id'),
@@ -176,7 +89,7 @@
     });
   });
 $('#school_district_id').on('change', function() {
-      $.post('<?=base_url("admin/clustercenter/tehsil_by_district")?>',
+      $.post('<?=base_url("admin/clusterschool/tehsil_by_district")?>',
     {
       '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
       district_id : this.value

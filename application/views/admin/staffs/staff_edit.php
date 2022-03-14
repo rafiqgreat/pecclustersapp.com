@@ -71,16 +71,15 @@
 
                 <div class="col-md-12">
                 <select id="district" name="district" class="form-control">
-                <option value="" >--Select District--</option>
-                <?php
-                foreach($districts as $dis)
-                {
-                  ?>
-                  <option value="<?= $dis['district_id']; ?>" ><?= $dis['district_name_en']; ?></option>
-                 
-                  <?php
-                }
-                ?>         
+                 <?php
+                	foreach($districts as $district)
+                          {
+                              $selectedText = '';
+					          if($district['district_id']==$staff['district'])
+					          $selectedText = ' selected="selected" ';
+                   			  echo '<option value="'.$district['district_id'].'" '.$selectedText.'>'.$district['district_name_en'].'</option>';
+                          }
+				?>    
                </select>
                 </div>
               </div>
@@ -89,29 +88,36 @@
 
                 <div class="col-md-12">
                 <select id="tehsil" name="tehsil" class="form-control">
-                <option value="" >--Select Tehsil--</option>  
+                 <?php
+                	foreach($tehsils as $tehsil)
+                          {
+                              $selectedText = '';
+					          if($tehsil['tehsil_id']==$staff['tehsil'])
+					          $selectedText = ' selected="selected" ';
+                   			  echo '<option value="'.$tehsil['tehsil_id'].'" '.$selectedText.'>'.$tehsil['tehsil_name_en'].'</option>';
+                          }
+				?>
                </select>
                 </div>
 
               </div>
 
               <div class="form-group">
-                <label for="school_id" class="col-sm-2 control-label">School Name</label>
-
+                <label for="school_id" class="col-sm-2 control-label">Exams Center Name</label>
                 <div class="col-md-12">
                 <select id="school_id" name="school_id" class="form-control">
-                <option school_id="1" value="1">test 1</option>
-                <option School_id="2" value="2">test 2</option>
-               </select>
+                <?php
+                	foreach($schools as $school)
+                          {
+                              $selectedText = '';
+					          if($school['cs_id']==$staff['school_id'])
+					          $selectedText = ' selected="selected" ';
+                   			  echo '<option value="'.$school['cs_id'].'" '.$selectedText.'>'.$school['cs_name'].'</option>';
+                          }
+				?>
+                </select>
                 </div>
               </div>
-
-
-
-
-
-
-
 
               <div class="form-group">
                 <label for="role" class="col-sm-2 control-label">Select Status</label>
@@ -158,6 +164,24 @@ $('#district').on('change', function() {
         });   
     });
 });
-
-
+$('#tehsil').on('change', function()
+{
+    $.post('<?=base_url("admin/staffs/cluster_schools_by_tehsil")?>',
+    {
+      '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
+      tehsil_id : this.value
+    },
+    function(data){
+      arr = $.parseJSON(data);     
+      console.log(arr);     
+      $('#school_id option:not(:first)').remove();
+      $.each(arr, function(key, value) {           
+      $('#school_id')
+         .append($("<option></option>")
+                    .attr("value", value.school_id)
+                    .text(value.cs_name+' '+value.cs_address)
+                  ); 
+        });   
+    });
+});
 </script>

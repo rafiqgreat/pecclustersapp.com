@@ -6,10 +6,10 @@
         <div class="card-header">
           <div class="d-inline-block">
               <h3 class="card-title"> <i class="fa fa-plus"></i>
-              Add New Cluster Center </h3>
+              Add New Exams Center </h3>
           </div>
           <div class="d-inline-block float-right">
-            <a href="<?= base_url('admin/clustercenter'); ?>" class="btn btn-success"><i class="fa fa-list"></i>  Cluster Centers List</a>
+            <a href="<?= base_url('admin/clustercenter'); ?>" class="btn btn-success"><i class="fa fa-list"></i>  Exams Centers List</a>
           </div>
         </div>
         <div class="card-body">   
@@ -23,19 +23,19 @@
                 	<label for="cc_type" class="col-sm-12 control-label">Type</label>
                     <select name="cc_type" class="form-control form-group" id="cc_type" placeholder="" required="required">
                         <option value="">-- Select Type --</option>
-                        <option value="CLUSTER">CLUSTER</option>
-                        <option value="PEF">PEF</option>
+                        <option value="CLUSTER">Exams</option>
+                        <option value="PEF">PEIMA</option>
                     </select>
                 </div> 
 				               
               </div>
               <div class="row">
                 <div class="col-lg-3 col-sm-12" >
-                	<label for="cc_name" class="col-sm-12 control-label">Cluster Center Name</label>
+                	<label for="cc_name" class="col-sm-12 control-label">Exams Center Name</label>
                     <input type="text" name="cc_name" class="form-control form-group" id="cc_name" placeholder="" required="required">
                 </div>
               	<div class="col-lg-3 col-sm-12">
-                	<label for="cc_address" class="col-sm-12 control-label">Cluster Center Address</label>
+                	<label for="cc_address" class="col-sm-12 control-label">Exams Center Address</label>
                     <input type="text" name="cc_address" class="form-control form-group" id="cc_address" placeholder="" required="required">
                 </div>
                <div class="col-lg-3 col-sm-12">
@@ -71,7 +71,7 @@
               
               <div class="row">
 				  <div class="col-lg-3 col-sm-12">
-                	<label for="cc_level" class="col-sm-12 control-label">Cluster Center Level</label>
+                	<label for="cc_level" class="col-sm-12 control-label">Exams Center Level</label>
                     <select name="cc_level" class="form-control form-group" id="cc_level" placeholder="" required="required">
                         <option value="Primary">Primary</option>
                         <option value="Elementary">Elementary</option>
@@ -80,7 +80,7 @@
                     </select>
                 </div>
               	<div class="col-lg-3 col-sm-12">
-                	<label for="cc_gender" class="col-sm-12 control-label">Cluster Center Gender</label>
+                	<label for="cc_gender" class="col-sm-12 control-label">Exams Center Gender</label>
                     <select name="cc_gender" class="form-control form-group" id="cc_gender" placeholder="" required="required">
                         <option value="MALE">MALE</option>
                         <option value="FEMALE">FEMALE</option>
@@ -88,7 +88,7 @@
                     </select>
                 </div>
                 <div class="col-lg-3 col-sm-12">
-                	<label for="cc_email" class="col-sm-12 control-label">Cluster Center Email</label>
+                	<label for="cc_email" class="col-sm-12 control-label">Exams Center Email</label>
                     <input type="email" name="cc_email" class="form-control form-group" id="cc_email" placeholder="" required="required">
                 </div>             
              

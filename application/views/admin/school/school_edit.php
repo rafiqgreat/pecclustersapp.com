@@ -35,7 +35,7 @@
                     <select name="school_department" class="form-control" id="school_department" placeholder="" required="required">
                         <option value="SED" <?= ($school['school_department'] == 'SED')?'selected': '' ?>>SED</option>
                         <option value="FEDERAL" <?= ($school['school_department'] == 'FEDERAL')?'selected': '' ?>>FEDERAL</option>                       
-                        <option value="PEF" <?= ($school['school_department'] == 'PEF')?'selected': '' ?>>PEF</option>
+                        <option value="PEF" <?= ($school['school_department'] == 'PEF')?'selected': '' ?>>PEIMA</option>
                         <option value="COMMUNITY" <?= ($school['school_department'] == 'COMMUNITY')?'selected': '' ?>>COMMUNITY</option>
 						<option value="LITERACY" <?= ($school['school_department'] == 'LITERACY')?'selected': '' ?>>LITERACY</option>
 						<option value="PSSP" <?= ($school['school_department'] == 'PSSP')?'selected': '' ?>>PSSP</option>

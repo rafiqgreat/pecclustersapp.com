@@ -79,7 +79,7 @@
 			//print_r($result);
 			//die();
 		}
-		function getTehsils_by_district($district_id)
+		public function getTehsils_by_district($district_id)
 		{
 			$this->db->select('tehsil_id, tehsil_name_en, tehsil_name_ur')
 					 ->from('ci_tehsil')
@@ -87,6 +87,33 @@
 					 ->where('tehsil_status', 1);					 
 			$query = $this->db->get();			
 			return $query->result_array();
+		}
+		public function getSchools_by_tehsil($tehsil_id)
+		{
+			$this->db->select('cs_id, cs_name, cs_address')
+					 ->from('ci_schools')
+					 ->where('cs_tehsil_id', $tehsil_id)
+					 ->where('cs_status', 1);					 
+			$query = $this->db->get();			
+			return $query->result_array();
+		}
+		public function getClusterSchools_by_tehsil($tehsil_id)
+		{
+			$this->db->select('cs_id, cs_name, cs_address')
+					 ->from('ci_schools')
+					 ->where('cs_tehsil_id', $tehsil_id)
+					 ->where('cs_type', 'CLUSTER')
+					 ->where('cs_status', 1);					 
+			$query = $this->db->get();			
+			return $query->result_array();
+		}
+		public function getSchools()
+		{	
+			$this->db->select('*')
+					 ->from('ci_schools')					 
+					 ->where('cs_status', 1);
+			$query = $this->db->get();
+			return $result = $query->result_array();
 		}
 	}
 	?>
