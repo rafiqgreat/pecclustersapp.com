@@ -11,8 +11,11 @@
 		public function get_all_staffs(){
 			$wh =array();
 			$SQL ='SELECT *, district_name_en, tehsil_name_en FROM ci_staff s
-			INNER JOIN ci_districts d ON s.district = d.district_id
-			INNER JOIN ci_tehsil t ON s.tehsil = t.tehsil_id';			
+			LEFT JOIN ci_districts d ON s.district = d.district_id
+			LEFT JOIN ci_tehsil t ON s.tehsil = t.tehsil_id
+			LEFT JOIN ci_schools sc ON s.school_id = sc.cs_id';	
+			/*'SELECT *, district_name_en, tehsil_name_en FROM ci_staff s INNER JOIN ci_districts d ON s.district = d.district_id INNER JOIN ci_tehsil t ON s.tehsil = t.tehsil_id INNER JOIN ci_schools sc ON s.school_id = sc.cs_id'*/	
+			if($_SESSION['admin_role_id']!=1){$wh[]='district='.$_SESSION['district_dadmin'];}	
 			if(count($wh)>0)
 			{
 				$WHERE = implode(' and ',$wh);
@@ -52,17 +55,29 @@
 
 		//---------------------------------------------------
 		// get staffs for csv export
-		public function get_staffs_for_export(){
-			
-			$this->db->where('is_admin', 0);
+		public function get_staffs_for_export()
+		{
+			//$this->db->where('is_admin', 0);
 			$this->db->select('id, staffname, firstname, lastname, email, mobile_no, created_at');
 			$this->db->from('ci_staff');
+			$query = $this->db->get();
+			return $result = $query->result_array();
+		}
+		public function get_staffs_for_export_csv()
+		{
+			//$this->db->where('is_admin', 0);
+			$this->db->select('id, staffname, firstname, lastname, email, mobile_no, district_name_en, tehsil_name_en, cs_name, type, created_at');
+			$this->db->from('ci_staff');
+			$this->db->join('ci_districts', 'district = district_id', 'left');
+			$this->db->join('ci_tehsil', 'tehsil = tehsil_id', 'left');
+			$this->db->join('ci_schools', 'school_id = cs_id', 'left');
 			$query = $this->db->get();
 			return $result = $query->result_array();
 		}
 		public function getDistricts()
 		{
 			$this->db->where('district_status', 1);
+			$this->db->where('district_id', $this->session->userdata('district_dadmin'));
 			$this->db->select('*');
 			$this->db->from('ci_districts');
 			$query = $this->db->get();

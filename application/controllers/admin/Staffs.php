@@ -32,7 +32,7 @@ class Staffs extends MY_Controller {
 				$row['email'],
 				$row['district_name_en'],
 				$row['tehsil_name_en'],
-				$row['school_id'],
+				$row['cs_name'],
 				$row['type'],
 				$row['mobile_no'],
 				date_time($row['created_at']),	
@@ -207,20 +207,19 @@ class Staffs extends MY_Controller {
 	//---------------------------------------------------------------	
 	// Export data in CSV format 
 	public function export_csv(){ 
-
-	   // file name 
+	    // file name 
 		$filename = 'staffs_'.date('Y-m-d').'.csv'; 
 		header("Content-Description: File Transfer"); 
 		header("Content-Disposition: attachment; filename=$filename"); 
 		header("Content-Type: application/csv; ");
 
-	   // get data 
-		$staff_data = $this->staff_model->get_staffs_for_export();
-
-	   // file creation 
+	    // get data 
+	    // id, staffname, firstname, lastname, email, mobile_no, created_at
+		$staff_data = $this->staff_model->get_staffs_for_export_csv();
+		// file creation 
 		$file = fopen('php://output', 'w');
 
-		$header = array("ID", "Staff Name", "First Name", "Last Name","District","Tehsil","School Name", "Email","Type", "Mobile_no", "Created Date"); 
+		$header = array("ID", "Staff Name", "First Name", "Last Name", "Email", "Mobile_no", "District", "Tehsil", "School Name", "Type",  "Created Date"); 
 
 		fputcsv($file, $header);
 		foreach ($staff_data as $key=>$line){ 

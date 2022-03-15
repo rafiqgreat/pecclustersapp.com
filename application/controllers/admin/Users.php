@@ -25,6 +25,7 @@ class Users extends MY_Controller {
 	}
 	
 	public function datatable_json(){				   					   
+		
 		$records = $this->user_model->get_all_users();
 		$data = array();
 
@@ -52,7 +53,8 @@ class Users extends MY_Controller {
 		$records['data']=$data;
 		echo json_encode($records);						   
 	}
-	public function datatable_json_dadmin(){				   					   
+	public function datatable_json_dadmin(){	
+				   					   
 		$records = $this->user_model->get_all_dadmin();
 		$data = array();
 
@@ -161,6 +163,7 @@ class Users extends MY_Controller {
 					'email' => $this->input->post('email'),
 					'mobile_no' => $this->input->post('mobile_no'),
 					'password' =>  password_hash($this->input->post('password'), PASSWORD_BCRYPT),
+					'district_dadmin' => $this->input->post('district_dadmin'),
 					'is_admin' => '1',
 					'is_active' => '1',
 					'created_at' => date('Y-m-d : h:m:s'),
@@ -174,8 +177,10 @@ class Users extends MY_Controller {
 				}
 			}
 		}
-		else{
+		else
+		{
 			$data['title'] = 'Add District Admin';
+			$data['districts'] = $this->user_model->get_all_district();
 			$this->load->view('admin/includes/_header', $data);
 			$this->load->view('admin/users/dadmin_add');
 			$this->load->view('admin/includes/_footer');
@@ -250,6 +255,7 @@ class Users extends MY_Controller {
 					'email' => $this->input->post('email'),
 					'mobile_no' => $this->input->post('mobile_no'),
 					'password' =>  password_hash($this->input->post('password'), PASSWORD_BCRYPT),
+					'district_dadmin' => $this->input->post('district_dadmin'),
 					'created_at' => date('Y-m-d : h:m:s'),
 					'updated_at' => date('Y-m-d : h:m:s'),
 				);
@@ -263,6 +269,7 @@ class Users extends MY_Controller {
 		}
 		else{
 			$data['title'] = 'Edit District Admin';
+			$data['districts'] = $this->user_model->get_all_district();
 			$data['user'] = $this->user_model->get_dadmin_by_id($id);
 			
 			$this->load->view('admin/includes/_header', $data);

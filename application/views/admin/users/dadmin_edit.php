@@ -17,52 +17,57 @@
             <?php $this->load->view('admin/includes/_messages.php') ?>
            
             <?php echo form_open(base_url('admin/users/dadmin_edit/'.$user['admin_id']), 'class="form-horizontal"' )?> 
-              <div class="form-group">
-                <label for="username" class="col-sm-2 control-label">User Name</label>
-
-                <div class="col-md-12">
+              <div class="form-group row">
+                <div class="col-6">
+                	<label for="username" class="col-sm-2 control-label">User Name</label>
                   <input type="text" name="username" value="<?= $user['username']; ?>" class="form-control" id="username" placeholder="">
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="firstname" class="col-sm-2 control-label">First Name</label>
-
-                <div class="col-md-12">
+                <div class="col-6">
+                	<label for="firstname" class="col-sm-2 control-label">First Name</label>
                   <input type="text" name="firstname" value="<?= $user['firstname']; ?>" class="form-control" id="firstname" placeholder="">
                 </div>
               </div>
 
-              <div class="form-group">
-                <label for="lastname" class="col-sm-2 control-label">Last Name</label>
-
-                <div class="col-md-12">
+              <div class="form-group row">
+                <div class="col-6">
+                	<label for="lastname" class="col-sm-2 control-label">Last Name</label>
                   <input type="text" name="lastname" value="<?= $user['lastname']; ?>" class="form-control" id="lastname" placeholder="">
                 </div>
-              </div>
-
-              <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">Email</label>
-
-                <div class="col-md-12">
+                <div class="col-6">
+                	<label for="email" class="col-sm-2 control-label">Email</label>
                   <input type="email" name="email" value="<?= $user['email']; ?>" class="form-control" id="email" placeholder="">
                 </div>
               </div>
-              <div class="form-group">
-                <label for="mobile_no" class="col-sm-2 control-label">Mobile No</label>
-
-                <div class="col-md-12">
+              
+              <div class="form-group row">
+                <div class="col-6">
+                	<label for="mobile_no" class="col-sm-2 control-label">Mobile No</label>
                   <input type="number" name="mobile_no" value="<?= $user['mobile_no']; ?>" class="form-control" id="mobile_no" placeholder="">
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="role" class="col-sm-2 control-label">Select Status</label>
-
-                <div class="col-md-12">
+                <div class="col-6">
+                	<label for="role" class="col-sm-2 control-label">Select Status</label>
                   <select name="status" class="form-control">
                     <option value="">Select Status</option>
                     <option value="1" <?= ($user['is_active'] == 1)?'selected': '' ?> >Active</option>
                     <option value="0" <?= ($user['is_active'] == 0)?'selected': '' ?>>Deactive</option>
                   </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-6">
+                	<label for="district_dadmin" class="col-sm-2 control-label">Select District</label>
+                  	<select name="district_dadmin" class="form-control form-group" id="district_dadmin"  required>
+                    <option value="">--Select District--</option>
+                      <?php
+					   foreach($districts as $district)
+						  {
+							  $selectedText = '';
+							  if($user['district_dadmin']==$district['district_id'])
+							  $selectedText = ' selected="selected" ';
+							  echo '<option value="'.$district['district_id'].'" '.$selectedText.' >'.$district['district_name_en'].'</option>';
+						  }
+					  ?>
+                    </select>
                 </div>
               </div>
               <div class="form-group">

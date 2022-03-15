@@ -6,6 +6,7 @@ class Clusterschool extends MY_Controller {
 		$this->load->model('admin/Clusterschool_model', 'Clusterschool_model');
 		$this->load->library('datatable'); // loaded my custom serverside datatable library
 	}
+	
 	public function index()
 	{
 		$data['title'] = 'Cluster Center List';
@@ -13,33 +14,14 @@ class Clusterschool extends MY_Controller {
 		$this->load->view('admin/clusterschool/clustercenter_list');
 		$this->load->view('admin/includes/_footer');
 	}
+	
 	public function pef_school()
 	{
-		//die('pef_school');
 		$data['title'] = 'School List';
 		$this->load->view('admin/includes/_header', $data);
 		$this->load->view('admin/clusterschool/school_list');
 		$this->load->view('admin/includes/_footer');
 	}
-	
-	/*public function schools_report()
-	{
-		$data['title'] = 'Schools Statistics Report';
-		$this->load->view('admin/includes/_header', $data);
-		if($this->session->userdata('role_id') == 7){
-			$data['dfp_schools'] = $this->School_model->get_school_for_dfp();
-			$this->load->view('admin/school/school_stats_report', $data);
-		}
-		if($this->session->userdata('role_id') == 8){
-			$data['tfp_schools'] = $this->School_model->get_school_for_tfp();
-			$this->load->view('admin/school/school_stats_report_tfp', $data);
-		}
-		if($this->session->userdata('role_id') == 1){
-			$data['dfp_schools'] = $this->School_model->get_school_for_admin();
-			$this->load->view('admin/school/school_stats_report_admin', $data);
-		}
-		$this->load->view('admin/includes/_footer');
-	}*/
 	
 	public function datatable_json()
 	{	
@@ -168,10 +150,6 @@ class Clusterschool extends MY_Controller {
 					$data['cs_parent'] = $this->input->post('cs_parent');	
 				}
 				
-				//$data = $this->security->xss_clean($data);
-				//echo '<pre>';
-				//print_r($data);
-				//die();
 				$result = $this->Clusterschool_model->add($data);
 				if($result){
 					if($this->input->post('cs_type')=="CLUSTER"){
@@ -187,7 +165,11 @@ class Clusterschool extends MY_Controller {
 		}
 		else{
 			$data['title'] = 'Add Cluster Center/School';
-			$data['districts'] = $this->Clusterschool_model->get_all_districts();
+			if($this->session->userdata('admin_role_id') == 1)
+			{$data['districts'] = $this->Clusterschool_model->get_all_districts();}
+			else
+			{$data['districts'] = $this->Clusterschool_model->get_dadmin_districts();}
+			
 			$this->load->view('admin/includes/_header', $data);
 			$this->load->view('admin/clusterschool/clusterschool_add');
 			$this->load->view('admin/includes/_footer');

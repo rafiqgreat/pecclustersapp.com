@@ -16,7 +16,7 @@
 			<a href="<?= base_url('admin/clusterschool/create_culschool_pdf') ?>" class="btn btn-secondary">Export as PDF</a>
             <a href="<?= base_url('admin/clusterschool/export_culschool_csv') ?>" class="btn btn-secondary">Export as CSV</a>
           </div>
-			<?php if($this->session->userdata('admin_role_id') == 1){?>
+			<?php if($this->session->userdata('admin_role_id') == 1 || $this->session->userdata('admin_role_id') == 2){?>
           	<a href="<?= base_url('admin/clusterschool/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Add New Exams Center</a>
 			<?php }?>
         </div>

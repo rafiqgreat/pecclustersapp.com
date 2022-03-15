@@ -95,6 +95,14 @@
 			$query = $this->db->get();
 			return $result = $query->result_array();
 		}
+		public function get_all_district(){
+			
+			$this->db->where('district_status', 1);
+			$this->db->select('*');
+			$this->db->from('ci_districts');
+			$query = $this->db->get();
+			return $result = $query->result_array();
+		}
 
 	}
 

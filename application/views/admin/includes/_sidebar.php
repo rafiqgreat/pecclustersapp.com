@@ -61,7 +61,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
             </p>
           </a>
         </li>
-        
+        <?php if($_SESSION['admin_role_id']==1) {?>
     	<li id="dadmin" class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fa fa-user"></i>
@@ -85,7 +85,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
             </li>
           </ul>
         </li>
-        
+        <?php }?>
         <li id="clusterschool" class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fa fa-user"></i>
