@@ -30,8 +30,23 @@
                 	<label for="lastname" class="col-12 control-label">Last Name</label>
                   <input type="text" name="lastname" class="form-control" id="lastname" placeholder="">
                 </div>
+                
               </div>
+              <div class="form-group row">
+              <div class="col-4">
+                  <label for="fathername" class="col-sm-12 control-label">Father Name</label>
+                  <input type="text" name="fathername" class="form-control" id="fathername" placeholder="">
+                </div>
+                <div class="col-4">
+                  <label for="cnic" class="col-sm-12 control-label">CNIC No</label>
+                  <input type="number" name="cnic" class="form-control" id="cnic" placeholder="">
+                </div>
+                <div class="col-4">
+                  <label for="dob" class="col-sm-12 control-label">Date of Birth</label>
+                  <input type="date" name="dob" class="form-control" id="dob" placeholder="">
+                </div>
               
+              </div>
               <div class="form-group row">
                 <div class="col-4">
                   <label for="email" class="col-12 control-label">Email</label>
@@ -50,6 +65,24 @@
                   <input type="number" name="mobile_no" class="form-control" id="mobile_no" placeholder="">
                 </div>
               </div>
+
+              <div class="form-group row">
+              <div class="col-4">
+                  <label for="placeofposting" class="col-sm-12 control-label">Place of Posting</label>
+                  <input type="text" name="placeofposting" class="form-control" id="placeofposting" placeholder="">
+                </div>
+                
+                <div class="col-4">
+                  <label for="designation" class="col-sm-12 control-label">Designation</label>
+                  <input type="text" name="designation" class="form-control" id="designation" placeholder="">
+                </div>
+
+                <div class="col-4">
+                  <label for="scale" class="col-sm-12 control-label">Scale</label>
+                  <input type="number" name="scale" min="1" max="20"class="form-control" id="scale" placeholder="">
+                </div>
+              </div>
+
               
               <div class="form-group">
                 <div class="col-12">

@@ -64,8 +64,13 @@ class Staffs extends MY_Controller {
 			$this->form_validation->set_rules('staffname', 'Staffname', 'trim|required');
 			$this->form_validation->set_rules('firstname', 'Firstname', 'trim|required');
 			$this->form_validation->set_rules('lastname', 'Lastname', 'trim|required');
+			$this->form_validation->set_rules('fathername', 'fathername', 'trim|required');
+			$this->form_validation->set_rules('cnic', 'cnic', 'trim|required');
+			$this->form_validation->set_rules('dob', 'dob', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|required');
 			$this->form_validation->set_rules('mobile_no', 'Number', 'trim|required');
+			$this->form_validation->set_rules('placeofposting', 'placeofposting', 'trim|required');
+			$this->form_validation->set_rules('designation', 'designation', 'trim|required');
 
 			if ($this->form_validation->run() == FALSE) {
 				$data = array(
@@ -79,6 +84,12 @@ class Staffs extends MY_Controller {
 					'staffname' => $this->input->post('staffname'),
 					'firstname' => $this->input->post('firstname'),
 					'lastname' => $this->input->post('lastname'),
+					'fathername' => $this->input->post('fathername'),
+					'cnic' => $this->input->post('cnic'),
+					'dob' => $this->input->post('dob'),
+					'placeofposting' => $this->input->post('placeofposting'),
+					'designation' => $this->input->post('designation'),
+					'scale' => $this->input->post('scale'),
 					'email' => $this->input->post('email'),
 					'district' => $this->input->post('district'),
 					'tehsil' => $this->input->post('tehsil'),
@@ -119,9 +130,15 @@ class Staffs extends MY_Controller {
 			$this->form_validation->set_rules('staffname', 'staffname', 'trim|required');
 			$this->form_validation->set_rules('firstname', 'firstname', 'trim|required');
 			$this->form_validation->set_rules('lastname', 'Lastname', 'trim|required');
-			$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|required');
+			$this->form_validation->set_rules('fathername', 'fathername', 'trim|required');
+			$this->form_validation->set_rules('cnic', 'cnic', 'trim|required');
+			$this->form_validation->set_rules('dob', 'dob', 'trim|required');
+			$this->form_validation->set_rules('email', 'email', 'trim|valid_email|required');
 			$this->form_validation->set_rules('mobile_no', 'Number', 'trim|required');
-			$this->form_validation->set_rules('status', 'Status', 'trim|required');
+			$this->form_validation->set_rules('placeofposting', 'placeofposting', 'trim|required');
+			$this->form_validation->set_rules('designation', 'designation', 'trim|required');
+			$this->form_validation->set_rules('scale', 'scale', 'trim|required');
+			$this->form_validation->set_rules('status', 'status', 'trim|required');
 
 			if ($this->form_validation->run() == FALSE) {
 				$data['staff'] = $this->staff_model->get_staff_by_id($id);
@@ -133,11 +150,17 @@ class Staffs extends MY_Controller {
 					'staffname' => $this->input->post('staffname'),
 					'firstname' => $this->input->post('firstname'),
 					'lastname' => $this->input->post('lastname'),
+					'fathername' => $this->input->post('fathername'),
+					'cnic' => $this->input->post('cnic'),
+					'dob' => $this->input->post('dob'),
 					'district' => $this->input->post('district'),
 					'school_id' => $this->input->post('school_id'),
 					'email' => $this->input->post('email'),
 					'type' => $this->input->post('type'),
 					'mobile_no' => $this->input->post('mobile_no'),
+					'placeofposting' => $this->input->post('placeofposting'),
+					'designation' => $this->input->post('designation'),
+					'scale' => $this->input->post('scale'),
 					'is_active' => $this->input->post('status'),
 					'updated_at' => date('Y-m-d : h:m:s'),
 				);

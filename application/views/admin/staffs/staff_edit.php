@@ -9,7 +9,7 @@
               &nbsp; Edit Staff </h3>
           </div>
           <div class="d-inline-block float-right">
-            <a href="<?= base_url('admin/admin'); ?>" class="btn btn-success"><i class="fa fa-list"></i>  Staffs List</a>
+            <a href="<?= base_url('admin/staffs'); ?>" class="btn btn-success"><i class="fa fa-list"></i>  Staffs List</a>
           </div>
         </div>
         <div class="card-body">   
@@ -34,12 +34,31 @@
 
               <div class="form-group">
                 <label for="lastname" class="col-sm-2 control-label">Last Name</label>
-
                 <div class="col-md-12">
                   <input type="text" name="lastname" value="<?= $staff['lastname']; ?>" class="form-control" id="lastname" placeholder="">
                 </div>
               </div>
+              <div class="form-group">
+              <label for="fathername" class="col-sm-2 control-label">Father Name</label>
+              <div class="col-md-12">
+                  <input type="fathername" name="fathername" value="<?= $staff['fathername']; ?>" class="form-control" id="fathername" placeholder="">
+                </div>
+              </div>
 
+              <div class="form-group">
+              <label for="cnic" class="col-sm-2 control-label">CNIC No</label>
+              <div class="col-md-12">
+                  <input type="number" name="cnic" value="<?= $staff['cnic']; ?>" class="form-control" id="cnic" placeholder="">
+                </div>
+              </div>
+              
+              <div class="form-group">
+              <label for="dob" class="col-sm-2 control-label">Date of Birth</label>
+              <div class="col-md-12">
+                  <input type="date" name="dob" value="<?= $staff['dob']; ?>" class="form-control" id="dob" placeholder="">
+                </div>
+              </div>
+             
               <div class="form-group">
                 <label for="email" class="col-sm-2 control-label">Email</label>
 
@@ -47,9 +66,24 @@
                   <input type="email" name="email" value="<?= $staff['email']; ?>" class="form-control" id="email" placeholder="">
                 </div>
               </div>
+
+              <div class="form-group">
+                <label for="placeofposting" class="col-sm-2 control-label">Place of Posting</label>
+                <input type="text" name="placeofposting" value="<?= $staff['placeofposting']; ?>" class="form-control" id="placeofposting" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label for="designation" class="col-sm-2 control-label">Designation</label>
+                <input type="text" name="designation" value="<?= $staff['designation']; ?>" class="form-control" id="designation" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="scale" class="col-sm-2 control-label">Scale</label>
+                <input type="number" name="scale" value="<?= $staff['scale']; ?>" min="1" max="20" class="form-control" id="scale" placeholder="">
+              </div>
+             
               <div class="form-group">
                 <label for="type" class="col-sm-2 control-label">Type</label>
-
+           
                 <div class="col-md-12">
                 <select id="type" name="type" class="form-control">
                 <option value="RI" <?= ($staff['type'] == "RI")?'selected': '' ?>>RI</option>
